@@ -1,3 +1,5 @@
-/**
- * Created by nowacki on 15.10.2016.
- */
+describe('First test', () => {
+    it('should fail', () => {
+        expect(false).toEqual(true);
+    });
+});
