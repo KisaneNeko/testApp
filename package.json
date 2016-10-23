@@ -39,6 +39,7 @@
     "ng-annotate-loader": "^0.1.0",
     "ng-cache-loader": "0.0.21",
     "phantomjs-prebuilt": "^2.1.13",
+    "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"

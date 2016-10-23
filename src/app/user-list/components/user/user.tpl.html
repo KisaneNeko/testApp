@@ -1,23 +1,15 @@
-<tr ng-if="!vm.isActive">
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.lastName }}</td>
-    <td>{{ vm.userCopy.birthDate }}</td>
-    <td>{{ vm.userCopy.personalIN }}</td>
-    <td>{{ vm.userCopy.city }}</td>
-    <td>{{ vm.userCopy.phone }}</td>
-    <td>{{ vm.userCopy.email }}</td>
-    <td>
+<tr>
+    <td ng-repeat="property in vm.userCopy" ng-if="!vm.isActive">
+        {{ property }}
+    </td>
+    <td ng-if="!vm.isActive">
         <button class="btn btn-default" ng-click="vm.setActive(true)">Edit</button>
     </td>
-</tr>
-<tr ng-if="vm.isActive">
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.name }}</td>
-    <td>{{ vm.userCopy.name }}</td>
-    <td>
+
+    <td ng-repeat="data in vm.getPropertyList()" ng-if="vm.isActive">
+        <input type="text" ng-model="vm.userCopy[data]">
+    </td>
+    <td ng-repeat="property in vm.userCopy" ng-if="vm.isActive">
         <button class="btn btn-default" ng-click="vm.apply()">Apply</button>
         <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
     </td>

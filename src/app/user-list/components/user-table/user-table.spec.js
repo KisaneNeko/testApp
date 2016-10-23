@@ -17,15 +17,23 @@ describe('UserTable', () => {
 
     beforeEach(() => {
         controller = new UserTableController(service);
+        spyOn(service, 'getUserData').and.returnValue(userDataMock);
     });
 
     it('should set users data', () => {
-        // given
-        spyOn(service, 'getUserData').and.returnValue(userDataMock);
-
         // when
         controller.$onInit();
 
+        // then
         expect(controller.userData).toEqual(userDataMock);
+    });
+
+    it('should set empty search string', () => {
+        // when
+        controller.$onInit();
+
+        // then
+        expect(controller.searchString).toBeDefined();
+        expect(controller.searchString).toEqual('');
     });
 });

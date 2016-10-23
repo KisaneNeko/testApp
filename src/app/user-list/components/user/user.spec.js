@@ -90,6 +90,14 @@ describe('User', () => {
             // then
             expect(controller.isActive).toBe(false);
         });
+
+        it('should return keys of user object', () => {
+            // when
+            const result = controller.getPropertyList();
+
+            // then
+            expect(result).toEqual(['name', 'lastName']);
+        });
         
         afterEach(() => {
             expect(controller.userData).not.toBe(controller.userCopy);

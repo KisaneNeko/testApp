@@ -13,6 +13,10 @@ class UserController {
         this.setActive(false);
     }
 
+    getPropertyList() {
+        return Object.keys(this.userCopy);
+    }
+
     cancel() {
         Object.assign(this.userCopy, this.userData);
         this.setActive(false);

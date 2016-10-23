@@ -4,6 +4,7 @@ class UserTableController {
 
         this.userTableService = userTableService;
         this.userData = [];
+        this.searchString = '';
     }
 
     $onInit() {

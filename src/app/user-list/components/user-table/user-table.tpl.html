@@ -1,17 +1,27 @@
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Data urodzenia</th>
-            <th>Pesel</th>
-            <th>Miasto</th>
-            <th>Telefon</th>
-            <th>Email</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr user ng-repeat="singleUser in vm.userData track by $index" user-data="singleUser"></tr>
-    </tbody>
-</table>
+<div class="row" style="text-align: center">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="Search by last name" ng-model="vm.searchString">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Data urodzenia</th>
+                <th>Pesel</th>
+                <th>Miasto</th>
+                <th>Telefon</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr user ng-repeat="singleUser in vm.userData | filter: { lastName: vm.searchString }" user-data="singleUser"></tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

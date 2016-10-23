@@ -1,10 +1,8 @@
-import controller from './app.controller';
 import template from './app.tpl.html';
+require('./app.css');
 
 const AppComponent = {
-    template,
-    controller,
-    controllerAs: 'vm'
+    template
 };
 
 export default AppComponent;
