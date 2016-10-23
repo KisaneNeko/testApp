@@ -11,7 +11,8 @@ function UserDirective() {
         controllerAs: 'vm',
         bindToController: true,
         scope: {
-            userData: '='
+            userData: '=',
+            removeUser: '&'
         }
     }
 }

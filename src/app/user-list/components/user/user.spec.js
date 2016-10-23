@@ -36,31 +36,20 @@ describe('User', () => {
             expect(controller.userData).toEqual(mockUser);
             expect(controller.userCopy).toEqual(mockUser);
             expect(controller.isActive).toBe(false);
+            expect(controller.propertyList).toEqual(['name', 'lastName']);
         });
 
-        it('should save user data on apply', () => {
+        it('should filter out angular specific properties', () => {
             // given
-            controller.userCopy = editedUser;
+            controller.userData.$$hash = 'random';
 
             // when
-            controller.apply();
+            const result = controller.getProperties();
 
             // then
-            expect(controller.userData).toEqual(controller.userCopy);
+            expect(result).not.toContain('$$hash');
         });
-        
-        it('should discard changes on cancel', () => {
-            // given
-            controller.userCopy = editedUser;
-            
-            // when
-            controller.cancel();
-            
-            // then
-            expect(controller.userData).toEqual(mockUser);
-            expect(controller.userCopy).toEqual(controller.userData);
-        });
-        
+
         it('should set directive as active', () => {
             // when
             controller.setActive(true);
@@ -69,34 +58,15 @@ describe('User', () => {
             expect(controller.isActive).toEqual(true);
         });
 
-        it('should cancel set directive as inactive', () => {
+        it('should set directive as inactive', () => {
             // given
             controller.setActive(true);
 
             // when
-            controller.cancel();
+            controller.closeEdit();
 
             // then
             expect(controller.isActive).toBe(false);
-        });
-
-        it('should apply set directive as inactive', () => {
-            // given
-            controller.setActive(true);
-
-            // when
-            controller.apply();
-
-            // then
-            expect(controller.isActive).toBe(false);
-        });
-
-        it('should return keys of user object', () => {
-            // when
-            const result = controller.getPropertyList();
-
-            // then
-            expect(result).toEqual(['name', 'lastName']);
         });
         
         afterEach(() => {

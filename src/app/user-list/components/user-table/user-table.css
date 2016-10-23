@@ -1,0 +1,12 @@
+user-table {
+    margin: 30px;
+    padding: 10px;
+}
+
+user-table .user-table {
+    margin-top: 15px;
+}
+
+user-table .search-box, user-table .user-table {
+    padding-left: 0;
+}

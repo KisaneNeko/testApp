@@ -1,16 +1,17 @@
 <tr>
-    <td ng-repeat="property in vm.getPropertyList() track by $index" ng-if="!vm.isActive">
-        {{ vm.userCopy[property] }}
+    <td ng-repeat="property in ::vm.propertyList track by $index">
+        <span>
+            {{ vm.userCopy[property] }}
+        </span>
+        <span ng-show="vm.isActive">
+            <input type="text" ng-model="vm.userCopy[property]">
+        </span>
     </td>
     <td ng-if="!vm.isActive">
-        <button class="btn btn-default" ng-click="vm.setActive(true)">Edit</button>
-    </td>
-
-    <td ng-repeat="data in vm.getPropertyList() track by $index" ng-if="vm.isActive">
-        <input type="text" ng-model="vm.userCopy[data]">
+        <button class="btn btn-default" ng-click="vm.openEdit()">Edytuj</button>
     </td>
     <td ng-if="vm.isActive">
-        <button class="btn btn-default" ng-click="vm.apply()">Apply</button>
-        <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+        <button class="btn btn-default" ng-click="vm.remove()">Usuń użytkownika</button>
+        <button class="btn btn-default" ng-click="vm.closeEdit()">Zamknij</button>
     </td>
 </tr>

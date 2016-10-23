@@ -5,26 +5,29 @@ class UserController {
     'ngInject';
 
         this.userCopy = angular.copy(this.userData);
+        this.propertyList = this.getProperties();
         this.isActive = false;
     }
 
-    apply() {
-        Object.assign(this.userData, this.userCopy);
-        this.setActive(false);
+    openEdit() {
+        this.setActive(true);
     }
 
-    getPropertyList() {
-        return Object.keys(this.userCopy);
-    }
-
-    cancel() {
-        console.log(this.userCopy);
-        this.userCopy = this.userData;
+    closeEdit() {
         this.setActive(false);
     }
 
     setActive(isActive) {
         this.isActive = isActive;
+    }
+
+    remove() {
+        this.removeUser({ user: this.userData });
+    }
+
+    getProperties() {
+        const keys = Object.keys(this.userData);
+        return keys.filter(item => item.indexOf('$') === -1 );
     }
 }
 
