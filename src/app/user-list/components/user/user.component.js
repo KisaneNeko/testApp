@@ -1,3 +1,10 @@
-/**
- * Created by nowacki on 23.10.2016.
- */
+import controller from './user.controller';
+import template from './user.tpl.html';
+
+const UserComponent = {
+    template,
+    controller,
+    controllerAs: 'vm'
+};
+
+export default UserComponent;

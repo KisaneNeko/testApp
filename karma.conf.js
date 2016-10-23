@@ -6,6 +6,7 @@ webpackConfig.babel.plugins = [
     only: 'src/'
   }]
 ];
+webpackConfig.entry = {};
 
 module.exports = function(config) {
   config.set({

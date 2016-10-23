@@ -1,5 +1,10 @@
-const random = () => {
-  return 1;
-};
+import angular from 'angular';
 
-console.log(random());
+import './app/user-list'
+
+import AppComponent from './app/components/app.component';
+
+export default angular.module('app', [
+    'user.List'
+])
+    .component('app', AppComponent);
