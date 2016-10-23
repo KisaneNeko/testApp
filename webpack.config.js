@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     context: path.resolve('src'),
@@ -43,7 +44,16 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: '../index.html',
+                to: path.resolve(__dirname, 'dist')
+            }
+        ])
+    ],
     devServer: {
+        port: 1234,
         contentBase: './'
     },
     resolve: {

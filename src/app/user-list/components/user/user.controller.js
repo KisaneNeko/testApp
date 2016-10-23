@@ -18,7 +18,8 @@ class UserController {
     }
 
     cancel() {
-        Object.assign(this.userCopy, this.userData);
+        console.log(this.userCopy);
+        this.userCopy = this.userData;
         this.setActive(false);
     }
 

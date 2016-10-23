@@ -1,5 +1,7 @@
 import template from './app.tpl.html';
-require('./app.css');
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 
 const AppComponent = {
     template
