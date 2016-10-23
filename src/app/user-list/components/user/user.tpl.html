@@ -1,9 +1,24 @@
-<tr>
-    <td>Jan</td>
-    <td>Kowalski</td>
-    <td>01.01.1990</td>
-    <td>90010111111</td>
-    <td>Lublin</td>
-    <td>357-357-357</td>
-    <td>jan.kowalski@gmail.com</td>
+<tr ng-if="!vm.isActive">
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.lastName }}</td>
+    <td>{{ vm.userCopy.birthDate }}</td>
+    <td>{{ vm.userCopy.personalIN }}</td>
+    <td>{{ vm.userCopy.city }}</td>
+    <td>{{ vm.userCopy.phone }}</td>
+    <td>{{ vm.userCopy.email }}</td>
+    <td>
+        <button class="btn btn-default" ng-click="vm.setActive(true)">Edit</button>
+    </td>
+</tr>
+<tr ng-if="vm.isActive">
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.name }}</td>
+    <td>{{ vm.userCopy.name }}</td>
+    <td>
+        <button class="btn btn-default" ng-click="vm.apply()">Apply</button>
+        <button class="btn btn-default" ng-click="vm.cancel()">Cancel</button>
+    </td>
 </tr>

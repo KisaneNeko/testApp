@@ -8,9 +8,10 @@
             <th>Miasto</th>
             <th>Telefon</th>
             <th>Email</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <user></user>
+        <tr user ng-repeat="singleUser in vm.userData track by $index" user-data="singleUser"></tr>
     </tbody>
 </table>
