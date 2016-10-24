@@ -1,27 +1,32 @@
 'use strict';
 const path = require('path');
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     context: path.resolve('src'),
-    entry: {
-        'angular-demo': ['./']
-    },
+    entry: [
+        //'webpack-dev-server/client?http://localhost:8080',
+        //'webpack/hot/only-dev-server',
+        './index'
+    ],
     output: {
         path: path.resolve('dist'),
         publicPath: '/',
-        filename: `[name].js`,
-        library: `[name]`,
+        filename: `react-demo.js`,
+        library: `react-demo`,
         libraryTarget: 'umd'
     },
     devtool: 'cheap-inline-source-map',
     babel: {
-        presets: ['es2015']
+        presets: ['es2015', 'react'],
+        plugins: ["react-hot-loader/babel", 'transform-object-rest-spread']
     },
     module: {
         loaders: [
             {
                 test: /\.js$/,
-                loaders: ['ng-annotate', 'babel'],
+                loaders: ['babel'],
                 cacheDirectory: true,
                 include: [
                     path.resolve(__dirname, 'src'),
@@ -29,13 +34,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.tpl\.html$/,
-                exclude: /node_modules/,
-                loader: 'ng-cache'
-            },
-            {
                 test: /\.css$/,
-                loaders: ['style', 'css']
+                loaders: ['style', 'raw']
             },
             {
                 test: /\.(eot|woff|woff2|ttf|svg|png|jpg)(\?.*$|$)$/,
@@ -43,6 +43,14 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: '../index.html',
+                to: path.resolve(__dirname, 'dist')
+            }
+        ])
+    ],
     devServer: {
         contentBase: './'
     },

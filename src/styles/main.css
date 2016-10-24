@@ -1,0 +1,14 @@
+.user-table-container {
+    margin: 30px;
+}
+
+.user-table-container {
+    margin-top: 15px;
+}
+.user-table table {
+    margin-top: 60px;
+}
+
+div.search-container, table.user-table {
+    padding-left: 0;
+}
