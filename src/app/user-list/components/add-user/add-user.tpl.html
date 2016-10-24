@@ -1,0 +1,10 @@
+<tr>
+    <td ng-repeat="label in ::vm.propertyList track by $index">
+        <span>
+            <input type="text" ng-model="vm.user[label]">
+        </span>
+    </td>
+    <td>
+        <button class="btn btn-default" ng-click="vm.add()">Dodaj</button>
+    </td>
+</tr>

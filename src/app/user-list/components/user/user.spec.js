@@ -7,10 +7,12 @@ describe('User', () => {
     let element;
     let $compile;
     let controller;
+    let removeSpy;
 
     const compileTemplate = (template, userData) => {
         element = angular.element(template);
         scope.userData = userData;
+        removeSpy = scope.removeUser = jasmine.createSpy('removeUser');
         const el = $compile(element)(scope);
         controller = el.controller('user');
         scope.$apply();
@@ -26,7 +28,7 @@ describe('User', () => {
     describe('methods', () => {
         const mockUser = { name: 'Foo', lastName: 'Bar' };
         const editedUser = { name: 'Name', lastName: 'Random' };
-        const template = '<tr user user-data="userData">';
+        const template = '<tr user user-data="userData" remove-user="removeUser(user)">';
 
         beforeEach(() => {
             compileTemplate(template, mockUser);
@@ -52,7 +54,7 @@ describe('User', () => {
 
         it('should set directive as active', () => {
             // when
-            controller.setActive(true);
+            controller.openEdit();
 
             // then
             expect(controller.isActive).toEqual(true);
@@ -67,6 +69,18 @@ describe('User', () => {
 
             // then
             expect(controller.isActive).toBe(false);
+        });
+
+        it('should remove user from the list', () => {
+            // given
+            const user = { name: 'foo', lastName: 'bar' };
+            controller.userData = user;
+
+            // when
+            controller.remove(user);
+
+            // then
+            expect(removeSpy).toHaveBeenCalledWith(user);
         });
         
         afterEach(() => {

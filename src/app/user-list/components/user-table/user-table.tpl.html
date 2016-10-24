@@ -18,6 +18,7 @@
         </tr>
         </thead>
         <tbody>
+        <tr add-user="vm.addUser(user)"></tr>
         <tr ng-repeat="singleUser in vm.userData | filter: { lastName: vm.searchString } track by $id(singleUser)"
             user user-data="singleUser" remove-user="vm.remove(user)">
         </tr>

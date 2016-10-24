@@ -17,6 +17,10 @@ class UserTableController {
             this.userData.splice(index, 1);
         }
     }
+
+    addUser(user) {
+        this.userData.push(user);
+    }
 }
 
 export default UserTableController;
