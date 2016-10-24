@@ -26,7 +26,7 @@ class User extends React.Component {
    _getRemoveButton(remove, index) {
        return (
         <td>
-            <button className="btn btn-default" onClick={() => remove(index)}>Usuń</button>
+            <button className="btn btn-default" onClick={() => this._remove(remove, index)}>Usuń</button>
             <button className="btn btn-default" onClick={this.close.bind(this)}>Zamknij</button>
         </td>
        );
@@ -42,6 +42,11 @@ class User extends React.Component {
            </span>
        )
    }
+
+    _remove(remove, index) {
+        this.setState({ isActive: false });
+        remove(index);
+    }
 
    render() {
        const { userData, removeUser, index, modifyUser } = this.props;

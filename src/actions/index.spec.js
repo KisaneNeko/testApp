@@ -23,4 +23,11 @@ describe('User list actions', () => {
             value: 'foo'
         });
     });
+
+    it('should create add_user action', () => {
+        expect(actions.addUser({ name: 'foo', lastName: 'bar' })).toEqual({
+            type: 'ADD_USER',
+            newUser: { name: 'foo', lastName: 'bar' }
+        });
+    });
 });

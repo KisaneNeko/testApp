@@ -1,6 +1,7 @@
 import React from 'react';
 import User from './user.component';
 import Search from '../containers/search.container';
+import AddUser from '../containers/add-user.container';
 
 const UserTable = ({ userList, removeUser, modifyUser }) => (
     <div className="user-table-container">
@@ -22,15 +23,17 @@ const UserTable = ({ userList, removeUser, modifyUser }) => (
                 </thead>
 
                 <tbody>
-                {userList.map((user, index) =>
-                  <User
-                    key={index}
-                    index={index}
-                    userData={user}
-                    removeUser={removeUser}
-                    modifyUser={modifyUser}
-                  />
-                )}
+                    <AddUser />
+
+                    {userList.map((user, index) =>
+                      <User
+                        key={index}
+                        index={index}
+                        userData={user}
+                        removeUser={removeUser}
+                        modifyUser={modifyUser}
+                      />
+                    )}
                 </tbody>
             </table>
         </div>

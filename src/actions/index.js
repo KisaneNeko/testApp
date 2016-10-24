@@ -15,4 +15,9 @@ const modifyUser = (index, key, value) => ({
     value
 });
 
-export { search, removeUser, modifyUser };
+const addUser = (newUser) => ({
+    type: 'ADD_USER',
+    newUser
+});
+
+export { search, removeUser, modifyUser, addUser };

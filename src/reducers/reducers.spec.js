@@ -60,4 +60,18 @@ describe('reducers', () => {
         // then
         expect(result.userList[0]).toEqual({ name: 'foo', lastName: 'foo' });
     });
+
+    it('should add new user', () => {
+        // given
+        const mockState = { userList: [{ name: 'foo', lastName: 'bar'}] };
+
+        // when
+        const result = reduce(mockState, {
+            type: 'ADD_USER',
+            newUser: { name: 'buzz', lastName: 'bazz' }
+        });
+
+        // then
+        expect(result.userList).toContain({ name: 'buzz', lastName: 'bazz' });
+    });
 });

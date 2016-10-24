@@ -41,6 +41,12 @@ const users = (state = initialState, action) => {
                 ...state,
                 userList: modifyUser(state.userList, action.index, action.key, action.value)
             };
+        case 'ADD_USER':
+            return {
+                ...state,
+                userList: [ ...userList, action.newUser ]
+            };
+
         default:
             return state;
     }
