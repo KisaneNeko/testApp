@@ -19,8 +19,8 @@ module.exports = {
     },
     devtool: 'cheap-inline-source-map',
     babel: {
-        presets: ['es2015', 'react'],
-        plugins: ["react-hot-loader/babel", 'transform-object-rest-spread']
+        presets: ['es2015', 'react', 'babel-preset-stage-2'],
+        plugins: ["react-hot-loader/babel"]
     },
     module: {
         loaders: [

@@ -1,6 +1,5 @@
 import 'babel-polyfill';
-import angular from 'angular';
-import 'angular-mocks/angular-mocks';
+import react from 'react';
 
 const context = require.context('../src', true, /spec\.js$/);
 context.keys().forEach(context);

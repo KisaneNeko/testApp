@@ -3,7 +3,7 @@ import React from 'react';
 class User extends React.Component {
    constructor() {
        super();
-       this.state = { isActive: true };
+       this.state = { isActive: false };
    }
 
    changeEdit() {
@@ -19,35 +19,49 @@ class User extends React.Component {
        this.changeEdit();
    }
 
-   render() {
-           const view = (
-              <td><button className="btn btn-default" onClick={this.edit.bind(this)}>Edytuj</button></td>
-           );
-           const edit = (
-               <td>
-                   <button className="btn btn-default">Usuń użytkownika</button>
-                   <button className="btn btn-default" onClick={this.close.bind(this)}>Zamknij</button>
-               </td>
-           );
-           const { userData } = this.props;
-           const active = this.state.isActive ? edit : view;
+   _getEditButton() {
+       return <td><button className="btn btn-default" onClick={this.edit.bind(this)}>Edytuj</button></td>;
+   }
 
-           return (<tr>
-                   <td>{userData.name}</td>
-                   <td>{userData.lastName}</td>
-                   <td>{userData.birthDate}</td>
-                   <td>{userData.personalIN}</td>
-                   <td>{userData.city}</td>
-                   <td>{userData.phone}</td>
-                   <td>{userData.email}</td>
-                   {active}
-           </tr>);
+   _getRemoveButton(remove, index) {
+       return (
+        <td>
+            <button className="btn btn-default" onClick={() => remove(index)}>Usuń</button>
+            <button className="btn btn-default" onClick={this.close.bind(this)}>Zamknij</button>
+        </td>
+       );
+   };
+
+   _getEditInput(userData, label, index, modifyUser) {
+       return !this.state.isActive ? '' : (
+           <span><br />
+               <input type="text"
+                      value={userData[label]}
+                      onChange={(e) => modifyUser(index, label, e.target.value)}
+               />
+           </span>
+       )
+   }
+
+   render() {
+       const { userData, removeUser, index, modifyUser } = this.props;
+       const userDataLabels = Object.keys(userData);
+       const controls = this.state.isActive ? this._getRemoveButton(removeUser, index) : this._getEditButton();
+
+       return (
+           <tr>
+               {userDataLabels.map((label, id) => (
+                   <td key={id}>
+                       <span>
+                            {userData[label]}
+                       </span>
+                       {this._getEditInput(userData, label, index, modifyUser)}
+                   </td>
+               ))}
+               {controls}
+            </tr>
+       );
    }
 }
-
-//<button class="btn btn-default" ng-click="vm.openEdit()">Edytuj</button>
-
-//<button class="btn btn-default" ng-click="vm.remove()">Usuń użytkownika</button>
-//<button class="btn btn-default" ng-click="vm.closeEdit()">Zamknij</button>
 
 export default User;
