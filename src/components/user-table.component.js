@@ -16,9 +16,8 @@ const UserTable = ({ userList, removeUser, modifyUser }) => (
                     <th>Data urodzenia</th>
                     <th>Pesel</th>
                     <th>Miasto</th>
-                    <th>Telefon</th>
                     <th>Email</th>
-                    <th>Actions</th>
+                    <th>Akcje</th>
                 </tr>
                 </thead>
 

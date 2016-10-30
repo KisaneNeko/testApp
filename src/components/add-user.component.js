@@ -3,7 +3,7 @@ import React from 'react';
 class AddUser extends React.Component {
     constructor() {
         super();
-        this.clearUser = { name: '', lastName: '', birthDate: '', personalIN: '', city: '', phone: '', email: '' };
+        this.clearUser = { name: '', lastName: '', birthDate: '', personalIN: '', city: '', email: '' };
         this.state = {
             user: { ...this.clearUser }
         };
