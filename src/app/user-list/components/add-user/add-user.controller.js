@@ -4,7 +4,7 @@ class UserController {
     constructor() {
         'ngInject';
 
-        this.clearUser = { name: '', lastName: '', birthDate: '', personalIN: '', city: '', phone: '', email: '' };
+        this.clearUser = { name: '', lastName: '', birthDate: '', personalIN: '', city: '', email: '' };
         this.user = angular.copy(this.clearUser);
 
         this.propertyList = Object.keys(this.user);
